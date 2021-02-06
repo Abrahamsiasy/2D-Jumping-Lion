@@ -13,6 +13,7 @@ public class scroller : MonoBehaviour
 
     void LateUpdate() {
         Debug.Log("LateUpdate Called");
+        Debug.Log("LateUpdate Called");
     }
 
     void OnEnable() {
