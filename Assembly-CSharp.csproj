@@ -36,10 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\CubeAnimation.cs" />
-     <Compile Include="Assets\CubeCollider.cs" />
-     <Compile Include="Assets\Player.cs" />
-     <Compile Include="Assets\scroller.cs" />
+     <Compile Include="Assets\Script\BGscript\BackgroundScroller.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
