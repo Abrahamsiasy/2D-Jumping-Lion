@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class BackgroundScroller : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
 
     public float speed = -0.04f;
+
+    [HideInInspector]
+    public bool canScroll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,9 @@ public class BackgroundScroller : MonoBehaviour
     {
         //get the material property anf the texture offset so it can hel it move
         // use the new vector2 then add the speed to move on x direction by mjltiplying it with delta time 
-        meshRenderer.material.mainTextureOffset -= new Vector2(speed * Time.deltaTime, 0);
+        if(canScroll)
+        {
+            meshRenderer.material.mainTextureOffset -= new Vector2(speed * Time.deltaTime, 0);
+        }
     }
 }
