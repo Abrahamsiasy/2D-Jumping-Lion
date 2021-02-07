@@ -1,0 +1,9 @@
+.DS_Store
+hooks/
+info/
+Library/
+Logs/
+refs/
+repo/
+Temp/
+*.log
