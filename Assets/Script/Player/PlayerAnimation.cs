@@ -11,6 +11,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private BackgroundScroller BGScroller;
     private GroundScroller groundScroller;
+    private BoxSpawner boxSpawner;
 
     public LayerMask groundLayer;
     public float jump = 10f;
@@ -20,12 +21,20 @@ public class PlayerAnimation : MonoBehaviour
     [HideInInspector]
     public bool isGrounded;
 
+    [SerializeField]
+    private BoxCollider2D boxCollider;
+    [SerializeField]
+    private PolygonCollider2D polygonCollider;
+
 
     void Awake() {
         animator = GetComponent<Animator>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         BGScroller = GameObject.Find("BackgroundPlane").GetComponent<BackgroundScroller>();
         groundScroller = GameObject.Find("Ground").GetComponent<GroundScroller>();
+        boxSpawner = GameObject.Find("BoxSpawner").GetComponent<BoxSpawner>();
+
+        Physics2D.IgnoreCollision(boxCollider, polygonCollider, true);
     }
     // Start is called before the first frame update
     void Start()
@@ -62,11 +71,14 @@ public class PlayerAnimation : MonoBehaviour
 
         }
     }
+    //call routine 
     IEnumerator StartGame(){
         yield return new WaitForSeconds(3f);
         gameStarted = true;
         BGScroller.canScroll = true;
         groundScroller.groundScroll = true;
         Debug.Log("Background Moving Started");
+        
+        boxSpawner.canSpawn = true;
     }
 }
