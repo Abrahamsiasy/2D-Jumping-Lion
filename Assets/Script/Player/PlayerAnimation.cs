@@ -26,6 +26,10 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField]
     private PolygonCollider2D polygonCollider;
 
+    public GameObject playerDiedEffect;
+    [HideInInspector]
+    public bool playerDied;
+
 
     void Awake() {
         animator = GetComponent<Animator>();
@@ -51,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameStarted == true){
+        if (gameStarted && playerDied == false){
             animator.SetFloat("walk", 1f);
             PlayerGrounded();
         }
@@ -80,5 +84,19 @@ public class PlayerAnimation : MonoBehaviour
         Debug.Log("Background Moving Started");
         
         boxSpawner.canSpawn = true;
+
+    }
+
+    void OnCollisionEnter2D(Collision2D target) {
+        if (target.gameObject.tag == "Box"){
+            DiedThroughCollison();
+        }
+    }
+
+    void DiedThroughCollison() {
+        Vector3 effectPostion = transform.position;
+        Instantiate(playerDiedEffect, effectPostion, Quaternion.identity);//q not rotation
+        Destroy(gameObject);//Destroy(target.gameObject);
+        playerDied = true;
     }
 }
