@@ -24,7 +24,7 @@ public class BackgroundScroller : MonoBehaviour
     {
         //get the material property anf the texture offset so it can hel it move
         // use the new vector2 then add the speed to move on x direction by mjltiplying it with delta time 
-        if(canScroll)
+        if(canScroll && PlayerAnimation.instance.playerDied == false)
         {
             meshRenderer.material.mainTextureOffset -= new Vector2(speed * Time.deltaTime, 0);
         }

@@ -15,7 +15,12 @@ public class BoxMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(ObstacleMove());
+        if(PlayerAnimation.instance.playerDied == false){
+            StartCoroutine(ObstacleMove());
+        }else{
+            boxSpeed = 0f;
+        }
+
     }
 
     //call routine 

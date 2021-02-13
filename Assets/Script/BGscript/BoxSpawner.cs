@@ -20,7 +20,7 @@ public class BoxSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSpawn ){
+        if (canSpawn && PlayerAnimation.instance.playerDied == false){
             if (timer <= 0){
                 Spawner();
             }

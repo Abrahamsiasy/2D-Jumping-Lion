@@ -19,7 +19,7 @@ public class GroundScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (groundScroll){
+        if (groundScroll && PlayerAnimation.instance.playerDied == false){
             offset = new Vector2(Time.time * groundSpeed, 0);
             renderer.material.mainTextureOffset = offset;
         }

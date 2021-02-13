@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+
+    public static PlayerAnimation instance;
     private Animator animator;
     private Rigidbody2D myRigidbody2D;
-
     private bool gameStarted;
 
     private BackgroundScroller BGScroller;
@@ -31,6 +32,7 @@ public class PlayerAnimation : MonoBehaviour
     public bool playerDied;
 
 
+
     void Awake() {
         animator = GetComponent<Animator>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -43,7 +45,13 @@ public class PlayerAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MakeInstance();
         StartCoroutine(StartGame());
+    }
+    void MakeInstance(){
+        if (instance == null){
+            instance = this;
+        }
     }
 
     void PlayerGrounded(){
